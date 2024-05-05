@@ -1,0 +1,22 @@
+REMOTE PROCEDURE INVOCATION
+
+ketika kita butuh data dari service lain, maka yg harus dilakukan adalah kita bisa menggunakan remote prodedure invocation. Idealnya komunikasi dilakukan melalui RPI atau RPC. namun, tidak direkomendasikan komunikasi dilakukan via database. 
+
+RPI sederhananya seperti API yang nanti akan dipakai oleh service lain. contoh RPI :
+-Restful API (HTTP) -> paling mudah
+-gRPC
+-Apache Thrift -> pendahulu gRPC
+-SOAP
+-Java RMI
+-Corba (Common Object Request Broker Architecture), dll
+
+
+setelah developer mau mengexpose data, maka diperlukan Restful API/RPI. Jadi misalnya dari orderservice akan menggunakan RPI ke product service untuk mengakses database yang dimilikinya. 
+
+keuntungan RPI :
+-sederhana dan mudah
+-biasanya digunakan untuk komunikasi request-reply
+-biasanya digunakan untuk proses sync /yang butuh menunggu jawaban
+
+
+

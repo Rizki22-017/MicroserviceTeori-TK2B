@@ -1,0 +1,34 @@
+MESSAGING
+
+cara komunikasi antar service dgn menggunakan messaging. 
+misalnya ada order service dgn database postgrres, dan butuh untuk mengirim email an sms, kemudian buth mengirim data penjualan ke finance dan report service. 
+
+jika menggunakan RPI, order service akan langsung kirim ke service lain. namun akan muncul problem jika mengimplementasikan rpi secara massif. 
+
+masalah komunikasi RPI :
+-proses lama (pada email service dan sms service)
+-mengirim data yang sama berkali-kali (pada finance service dan report service)
+-membuat parallel process sangat rumit
+
+
+------------
+messaging
+
+-messaging biasanya igunakan untuk komunikasi asyncronus
+-async artinya komunikasi bisa dilakukan tanpa harus menunggu selesai diproses
+-dalam async, kadang tidak perlu peduli balasan dari service yang dituju
+-biasanya berkomunikasi messaging membutuhkan message channel(dapat digambarkan sprt log) sebgai jembatan untuk mengirim data dan menerima data
+-direkomendasikan menggunakan aplikasi message broker (Dapat digambarkan sbg database) untuk melakukan management massage channel. 
+
+order service akan mengirim ke message broker order, dan channel order akan mengirim ke report dan finance service. 
+
+jika message broker dapat data, dan data tersebut sudah di consume oleh service yg dituju, maka data tersebut hilang di channel message broker sehingga tidak ada data berulang yg terkirim. 
+
+contoh message broker :
+-redis (pubsub)
+-apache kafka
+-RabbitMQ
+-nsq
+google pubsub
+-amazon web service sqs
+dll
