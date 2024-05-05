@@ -1,0 +1,21 @@
+SERVICE ORCHESTRATION
+
+aggregation berkomunikasi dengan microservice lain. scr garis besar ada dua jenis melakukan ggregation yaitu orchestration dan choreography. 
+
+-cara aggregation microservice berkimunikasi dgn microservice lain, jika menggunakan procedure invocation, maka dinamakan service orchestration pattern.
+-dalam service orchestration pattern, aggregation microservice bertugas untuk mengatur alur business logic sistem. 
+
+dalam sebuah kasus transaksi ecomerse, dapat dinamakan sbg service orchestration. 
+
+service orchestration akan direct/call service yang ditujunya. misalkan user akan melakukan transaksi dengn aggregation microservice. data yg diambil adalah memberservice untuk mengambil informasi member selanjutnya ke balance service, dan selanjutnya akan melakukan pembayaran di merchant service, selanjutnya akan mengirim email ke user dengan email service. 
+
+keuntungan service orchestration :
+- mudah dibuat, karena kode business logic akan terpusat di aggregation microservice. 
+- mudah dimengerti
+
+kekurangan :
+-aggregation microservice terlalu ketergantungan dgn microservice lain
+-akan lebih lambat karena harus terkoneksi dng microservice lain. semakin bnyak service yg dipanggil, akan semakin lambat response time nya
+-akan lebih mudah error jika microservice lain bermasalah
+-jika perlu microservice baru, perlu dilakukan perbuahan di aggregation microservice. 
+

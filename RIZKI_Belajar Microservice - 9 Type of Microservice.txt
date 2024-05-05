@@ -1,0 +1,42 @@
+Microservices terbagi jadi 3 tipe :
+1. stateless microservice
+2. persistence microservice
+3. aggregation microservice
+
+------------------------------------
+STATELESS MICROSERVICE
+-biasanya tidak memiliki database -> bisa punya, tapi tidak wajib punya db
+-digunakan untuk melakukan tugas sederhana -> tugas yg tidk terlalu kompleks
+-bisa digunakan juga sbg utility untuk microserv lain -> utk kebutuhan sprti membantu service lain. 
+-tidak bergantung dgn microserv lain -> running secara independent karena tugas yg sederhana. 
+
+
+contohnya email service dan sms service.
+
+--------------------------------------
+PERSISTENCE MICROSERVICE 
+-biasanya memiliki database -> bertugas sbg master database yg mengolah data.
+-Disebut master data microservice
+-biasa digunakan untuk mengolah data di database (CRUD)
+
+contoh persistence microserve
+
+terdapat 3 ->
+customer service untuk mengola data MySQL
+product service untuk mengolah data PostgreSQL
+order service untuk mengolah data mongodb
+
+kebanyakan persistence microserv menggunakan db, bisa tidak pakai db yg penting tugas nya mengolah data dan punya data.
+------------------------------------------
+AGGREGATION MICROSERVICE
+-tergantung dgn microservice lain
+-biasanya igunakan sebgai pusat business logic aplikasi
+-boleh memiliki database ataupun tidak
+-tidak bisa berdiri sendiri
+
+jika microservice lain mati, maka aggregation ini tidak optimal.
+
+contohnya : 
+-cart service -> seperti shoping cart di ecomerse. Ketika kita melakukan pemesanan,maka perlu ngambil data ke produk service, jika melakukan order kan mengakses data ke order service. 
+-payment service -> akan mengambil data ke order service dan mengirim ke payment gateway. 
+

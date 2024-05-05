@@ -1,0 +1,28 @@
+API GATEWAY
+
+masalah ekspose microservice
+- semua service bisa diakses dari luar -> jika terjadi satu isu di microservice dgn framework, terus ada security bug, maka harus memperbaiki semua microservice. 
+- jika butuh autentikasi,harus diimplementasikan di semua microservice
+- Rawan terjadi kebocoran data
+
+API gateway merupakan solusi agar kita tidak perlu mengekspose semua microservice ke user. 
+
+api gateway adalah aplikasi yang bertugas sbg gerbang dari luar ke dalam. luar adalah akses dari internet, dan dalam dalah aplikasi microservice. API gateway bertugas sebagai proxy server ke semua aplikasi microservices. aplikasi microservice hanya bisa diakses dari luar melalui API gateway. 
+
+
+User - internet - api gateway - microservice
+
+keuntungan implementasi api gateway
+-lebih aman karena hanya ada satu gerbang
+-service tidak perlu mengimplementasikan proses autentikasi, cukup dilakukan di api gateway.
+-api gateway juga bisa digunakansebgai load balancer
+-bisa digunakan sebagai rate limiter
+-bisa digunakan sebagai pengaman sehingga error dari service tidak terekspose. 
+
+contoh api gateway :
+-nginx
+-apache httpd
+-kong
+-Netflix zuul
+-spring cloud gateway
+
